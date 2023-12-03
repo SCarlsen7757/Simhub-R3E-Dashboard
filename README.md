@@ -17,10 +17,13 @@ Inspired by [Lovely SimHub Dashboard](https://github.com/cdemetriadis/lovely-das
 
 - [x] Gear, speed and RPM
 - [x] Tires information
-- [ ] Delta
+- [x] Delta
 - [ ] Lap times
-- [ ] Fuel
+- [x] Fuel
 - [x] Car settings
 - [ ] Car damage
-- [ ] Session data
-- [ ] Lap and position 
+- [x] Session data
+- [x] Lap and position
+- [ ] Oil temperature and pressure
+- [ ] Water temperature
+- [ ] Pit menu
