@@ -27,3 +27,8 @@ Inspired by [Lovely SimHub Dashboard](https://github.com/cdemetriadis/lovely-das
 - [ ] Oil temperature and pressure
 - [ ] Water temperature
 - [ ] Pit menu
+- [x] Flags
+- [x] Incident points
+- [x] Opponents information (Ahead and behind)
+- [ ] Relative
+- [ ] Standings
