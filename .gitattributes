@@ -3,3 +3,5 @@
 
 *.djson json
 .*metadata json
+
+*.png binary
