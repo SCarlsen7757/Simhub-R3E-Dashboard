@@ -1,0 +1,5 @@
+_Backups
+/*.djson.png
+/*.djson.*.png
+
+/.vs

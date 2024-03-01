@@ -1,0 +1,5 @@
+*.md export-ignore
+.git* export-ignore
+
+*.djson json
+.*metadata json

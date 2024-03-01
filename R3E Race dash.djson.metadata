@@ -1,0 +1,22 @@
+{
+  "SimHubVersion": "9.2.3",
+  "Category": null,
+  "Title": "R3E Race dash",
+  "Description": null,
+  "Author": "Mark Carlsen",
+  "ScreenCount": 3.0,
+  "InGameScreensIndexs": [
+    1
+  ],
+  "IdleScreensIndexs": [
+    0
+  ],
+  "MainPreviewIndex": 1,
+  "IsOverlay": false,
+  "Width": 854.0,
+  "Height": 480.0,
+  "OverlaySizeWarning": false,
+  "MetadataVersion": 2.0,
+  "EnableOnDashboardMessaging": true,
+  "PitScreensIndexs": []
+}
