@@ -285,16 +285,21 @@ function r3e_standingGapAbsoluteText(index, maxRow) {
         if (position == 1) {
             return 'L' + drivercurrentlap(position);
         }
-        const bestLapTime = timespantoseconds($prop("BestLapTime"));
+        const bestLapTime = timespantoseconds(driverbestlap(getbestlapopponentleaderboardposition()));
         const gapToLeader = drivergaptoleader(position);
-        if (bestLapTime <= 0) {
+        if (bestLapTime === null || bestLapTime <= 0) {
             return ld_formatTime(gapToLeader);
         }
         const gapToLeaderLaps = drivercurrentlap(1) - drivercurrentlap(position);
         if (gapToLeaderLaps == null || gapToLeaderLaps <= 0) {
             return ld_formatTime(gapToLeader);
+        } else if (gapToLeaderLaps > 1) {
+            return "+L" + gapToLeaderLaps;
+        } else if (gapToLeader > bestLapTime && gapToLeaderLaps > 0) {
+            return "+L" + gapToLeaderLaps;
+        } else {
+            return ld_formatTime(gapToLeader);
         }
-        return "+L" + gapToLeaderLaps;
     } else {
         let gap = driverdeltatobest(position);
         if ((gap == 0 || gap == null) && timespantoseconds(driverbestlap(position)) > 0) {
