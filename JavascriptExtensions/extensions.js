@@ -117,14 +117,14 @@ function r3e_lastLapColor(pos = null) {
     const lastLapTime = timespantoseconds(driverlastlap(racePosition));
     if (lastLapTime === null || lastLapTime <= 0) { return notRun; }
 
-    const bestLapTime = timespantoseconds(driverbestlap(racePosition));
-    if (bestLapTime === null || bestLapTime <= 0) { return notRun; }
-
     const leaderBestLapTime = $prop('DataCorePlugin.GameRawData.LapTimeBestLeader').toFixed(3);
-    if (leaderBestLapTime === null || leaderBestLapTime <= 0) { return notRun; }
+    if (leaderBestLapTime === null || leaderBestLapTime <= 0) { return overAllBest; }
 
     const classLeaderBestLapTime = $prop('DataCorePlugin.GameRawData.LapTimeBestLeaderClass').toFixed(3);
-    if (classLeaderBestLapTime === null || classLeaderBestLapTime <= 0) { return notRun; }
+    if (classLeaderBestLapTime === null || classLeaderBestLapTime <= 0) { return overAllClassBest; }
+
+    const bestLapTime = timespantoseconds(driverbestlap(racePosition));
+    if (bestLapTime === null || bestLapTime <= 0) { return personalBest; }
 
     if (lastLapTime <= leaderBestLapTime) { return overAllBest; }
     if (lastLapTime <= classLeaderBestLapTime) { return overAllClassBest; }
