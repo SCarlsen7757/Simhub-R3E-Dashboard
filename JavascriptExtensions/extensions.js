@@ -64,7 +64,7 @@ function isRace() {
 }
 
 function r3e_showRpmGauge() {
-    if (!showRpmGauge) {return false; }
+    if (!showRpmGauge) { return false; }
     return true;
 }
 
