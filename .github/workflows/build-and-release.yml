@@ -10,11 +10,15 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v4
-      
-    - name: Zip Repository and Rename
+      with:
+        path: R3E Race dash
+
+    - name: Exclude files and directories
       run: |
-        git archive -o simhubdash.zip HEAD
-        mv simhubdash.zip R3ERaceDash.simhubdash
+        find R3E\ Race\ dash -type f \( -name "*.md" -o -name ".git*" -o -name "LICENSE" \) -delete
+
+    - name: Zip folder
+      run: zip -r R3ERaceDash.simhubdash R3E\ Race\ dash
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
@@ -59,4 +63,3 @@ jobs:
         asset_path: "R3ERaceDash.simhubdash"
         asset_name: "R3ERaceDash.simhubdash"
         asset_content_type: application/zip
-
