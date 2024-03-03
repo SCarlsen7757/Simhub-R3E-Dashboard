@@ -376,12 +376,12 @@ function r3e_centerWidgetBacgroundColor() {
 }
 
 function r3e_sectorGainOpponent(index, opponentPosition) {
-    const opponentSectorTime = timespantoseconds(driversectorlastlap(opponentPosition), index, false);
+    const opponentSectorTime = timespantoseconds(driversectorlastlap(opponentPosition, index, false));
     if (opponentSectorTime === null || opponentSectorTime <= 0) { return 0; }
 
     const playerSectorTime = timespantoseconds(driversectorlastlap(getplayerleaderboardposition(), index, false));
 
-    return opponentSectorTime - playerSectorTime;
+    return playerSectorTime - opponentSectorTime;
 }
 
 function r3e_sectorGainOpponentColor(index, opponentPosition) {
