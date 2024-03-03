@@ -16,6 +16,8 @@ jobs:
     - name: Exclude files and directories
       run: |
         find R3E\ Race\ dash -type f \( -name "*.md" -o -name ".git*" -o -name "LICENSE" \) -delete
+        rm -rf R3E\ Race\ dash/.git
+        rm -rf R3E\ Race\ dash/.github
 
     - name: Zip folder
       run: zip -r R3ERaceDash.simhubdash R3E\ Race\ dash
