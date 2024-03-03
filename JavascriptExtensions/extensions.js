@@ -156,10 +156,10 @@ function r3e_bestLapColor(pos = null) {
 }
 
 function r3e_estimatedLapColor() {
-    if (!r3e_lapValid()) { return invalid; }
-
     const estLapTime = timespantoseconds(r3e_estimatedLapTime());
     if (estLapTime === null || estLapTime <= 0) { return notRun; }
+
+    if (!r3e_lapValid()) { return invalid; }
 
     let leaderBestLapTime = $prop('DataCorePlugin.GameRawData.LapTimeBestLeader').toFixed(3);
     if (leaderBestLapTime === null || leaderBestLapTime < 0) { leaderBestLapTime = 0; }
