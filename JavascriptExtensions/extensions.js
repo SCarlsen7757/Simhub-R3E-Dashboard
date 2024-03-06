@@ -44,9 +44,12 @@ const socLowColor = '#FFFF4500';
 
 //Center Widget colors
 const showThresholdRpm = true;
-const noRpmFlash = '#FF262626';
-const thresholdRpm = '#FF32CD32';
-const rpmFlash = '#FFFF4500';
+const noRpmFlashBackground = '#FF262626';
+const noRpmFlashText = '#FFFFFFFF';
+const thresholdRpmBackground = '#FF196719'; 
+const thresholdRpmText = '#FF32CD32';
+const rpmFlashBackground = '#FF802200'; 
+const rpmFlashText = '#FFFF4500';
 
 function isEven(number) {
     return number % 2 === 0;
@@ -381,13 +384,22 @@ function r3e_rpmRedLineReachedBlink() {
     return blink('r3eDashGearRpmBlink', 300, $prop("CarSettings_RPMRedLineReached"));
 }
 
-function r3e_centerWidgetBacgroundColor() {
-    if ($prop('DataCorePlugin.GameRawData.VehicleInfo.EngineType') == 1) { return noRpmFlash; }
-    if ($prop('DataCorePlugin.GameData.CarSettings_MaxGears') == $prop('DataCorePlugin.GameData.Gear')) { return noRpmFlash; }
+function r3e_centerWidgetBackgroundColor() {
+    if ($prop('DataCorePlugin.GameRawData.VehicleInfo.EngineType') == 1) { return noRpmFlashBackground; }
+    if ($prop('DataCorePlugin.GameData.CarSettings_MaxGears') == $prop('DataCorePlugin.GameData.Gear')) { return noRpmFlashBackground; }
     const shiftLight2 = $prop('DataCorePlugin.GameData.CarSettings_RPMShiftLight2');
-    if (showThresholdRpm && shiftLight2 > 0.3 && shiftLight2 < 1) { return thresholdRpm; }
-    if (r3e_rpmRedLineReachedBlink()) { return rpmFlash; }
-    return noRpmFlash;
+    if (showThresholdRpm && shiftLight2 > 0.3 && shiftLight2 < 1) { return thresholdRpmBackground; }
+    if (r3e_rpmRedLineReachedBlink()) { return rpmFlashBackground; }
+    return noRpmFlashBackground;
+}
+
+function r3e_centerWidgetTextColor(){
+    if ($prop('DataCorePlugin.GameRawData.VehicleInfo.EngineType') == 1) { return noRpmFlashText; }
+    if ($prop('DataCorePlugin.GameData.CarSettings_MaxGears') == $prop('DataCorePlugin.GameData.Gear')) { return noRpmFlashText; }
+    const shiftLight2 = $prop('DataCorePlugin.GameData.CarSettings_RPMShiftLight2');
+    if (showThresholdRpm && shiftLight2 > 0.3 && shiftLight2 < 1) { return thresholdRpmText; }
+    if (r3e_rpmRedLineReachedBlink()) { return rpmFlashText; }
+    return noRpmFlashText;
 }
 
 function r3e_sectorGainOpponent(index, opponentPosition) {
