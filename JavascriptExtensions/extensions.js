@@ -176,20 +176,27 @@ function r3e_estimatedLapColor() {
     return slow;
 }
 
+function r3e_useSessionBest() {
+    const sessionBest = $prop('PersistantTrackerPlugin.EstimatedLapTime_SessionBestBased');
+    if (sessionBest != secondstotimespan(0)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 function r3e_estimatedLapTime() {
     const driverPosition = getplayerleaderboardposition()
     if (driverisoutlap(driverPosition)) { return secondstotimespan(0); }
     else if (driveriscarinpit(driverPosition)) { return secondstotimespan(0); }
     else if (driveriscarinpitlane(driverPosition)) { return secondstotimespan(0); }
-
-    const allTimeBest = $prop('PersistantTrackerPlugin.EstimatedLapTime_AllTimeBestBased');
-    const sessionBest = $prop('PersistantTrackerPlugin.EstimatedLapTime_SessionBestBased');
-
-    if (sessionBest != secondstotimespan(0)) {
-        return sessionBest;
+    
+    if (r3e_useSessionBest()) {
+        return $prop('PersistantTrackerPlugin.EstimatedLapTime_SessionBestBased');
     }
     else {
-        return allTimeBest;
+        return $prop('PersistantTrackerPlugin.EstimatedLapTime_AllTimeBestBased');
     }
 }
 
@@ -198,14 +205,16 @@ function r3e_lapValid() {
 }
 
 function r3e_delta() {
-    const allTimeBestDelta = $prop('PersistantTrackerPlugin.AllTimeBestLiveDeltaSeconds');
-    const sessionBestDelta = $prop('PersistantTrackerPlugin.SessionBestLiveDeltaSeconds');
-
-    if (sessionBestDelta > 0) {
-        return sessionBestDelta;
+    const driverPosition = getplayerleaderboardposition()
+    if (driverisoutlap(driverPosition)) { return 0; }
+    else if (driveriscarinpit(driverPosition)) { return 0; }
+    else if (driveriscarinpitlane(driverPosition)) { return 0; }
+    
+    if (r3e_useSessionBest()) {
+        return $prop('PersistantTrackerPlugin.SessionBestLiveDeltaSeconds');
     }
     else {
-        return allTimeBestDelta;
+        return $prop('PersistantTrackerPlugin.AllTimeBestLiveDeltaSeconds');
     }
 }
 
